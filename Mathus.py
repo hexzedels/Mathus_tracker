@@ -4,7 +4,7 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
 pd.options.mode.chained_assignment = None
-data = pd.read_csv('~/data1.csv')
+data = pd.read_csv('data1.csv')
 theme_completer = WordCompleter(np.load('Titles.npy'))
 inp = prompt('Enter theme: ', completer=theme_completer)
 work_frame = data[data['Title'] == inp]
@@ -24,6 +24,7 @@ def add(problems):
     data['Solved'][indx] = np.array(temp)
     return temp 
 temp = fix_problems(work_frame)
+print('Solved')
 print('Currently solved: ',sum(1 for i in temp if i  == 1))
 print(temp)
 add(input("Enter problems separated by comma: "))
